@@ -59,13 +59,12 @@
     <div class="card">
         <div class="card-header text-center">
             <h2>Sentiment Analysis</h2>
-            <p>Enter a sentence to analyze the sentiment.</p>
+            <p>Enter a review in English to analyze the sentiment.</p>
         </div>
         <div class="card-body">
             <form action="/" method="POST" id="sentimentForm">
                 <div class="mb-3 position-relative">
-                    <label for="text" class="form-label">Text</label>
-                    <!-- Retain the user's input in the text box -->
+                    <label for="text" class="form-label">Review</label>
                     <textarea class="form-control" id="text" name="text" rows="3" placeholder="Enter text to analyze..." required>{{ input_text }}</textarea>
                     <span class="close-btn" onclick="clearText()">×</span>
                 </div>
@@ -77,7 +76,6 @@
     {% if result %}
     <div class="result text-center">
         <h4>Predicted Sentiment: <strong>{{ result }}</strong></h4>
-        <!-- Display emoji based on sentiment -->
         <div class="emoji {% if result == 'Positive' %}happy{% else %}sad{% endif %}">
             {% if result == 'Positive' %}
                 😀
