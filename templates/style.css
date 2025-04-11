@@ -1,0 +1,62 @@
+/* style.css */
+
+body {
+    background-color: #f8f9fa;
+    font-family: 'Arial', sans-serif;
+}
+
+.container {
+    max-width: 600px;
+    margin-top: 100px;
+}
+
+.card {
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+}
+
+.card h2 {
+    color: #495057;
+}
+
+.card .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    width: 100%;
+    padding: 12px;
+    border-radius: 5px;
+}
+
+.card .form-control {
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.card .form-group label {
+    font-weight: bold;
+}
+
+.card .text-center h3 {
+    font-size: 36px;
+    color: #007bff;
+}
+
+.card .text-center h3.text-success {
+    color: #28a745;
+}
+
+.text-center {
+    margin-top: 20px;
+}
+
+textarea {
+    resize: none;
+}
+
+@media (max-width: 767px) {
+    .container {
+        padding: 0 20px;
+    }
+}

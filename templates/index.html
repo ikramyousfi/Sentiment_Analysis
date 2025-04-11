@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analysis</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f4f7fc;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 600px;
+            margin-top: 50px;
+        }
+        .card {
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .btn-primary {
+            background-color: #4e73df;
+            border-color: #4e73df;
+        }
+        .btn-primary:hover {
+            background-color: #2e59d9;
+            border-color: #2e59d9;
+        }
+        .result {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 20px;
+            color: #888;
+        }
+        .close-btn:hover {
+            color: red;
+        }
+        .emoji {
+            font-size: 50px;
+        }
+        .happy {
+            color: green;
+        }
+        .sad {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="card">
+        <div class="card-header text-center">
+            <h2>Sentiment Analysis</h2>
+            <p>Enter a sentence to analyze the sentiment.</p>
+        </div>
+        <div class="card-body">
+            <form action="/" method="POST" id="sentimentForm">
+                <div class="mb-3 position-relative">
+                    <label for="text" class="form-label">Text</label>
+                    <!-- Retain the user's input in the text box -->
+                    <textarea class="form-control" id="text" name="text" rows="3" placeholder="Enter text to analyze..." required>{{ input_text }}</textarea>
+                    <span class="close-btn" onclick="clearText()">×</span>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Analyze Sentiment</button>
+            </form>
+        </div>
+    </div>
+    
+    {% if result %}
+    <div class="result text-center">
+        <h4>Predicted Sentiment: <strong>{{ result }}</strong></h4>
+        <!-- Display emoji based on sentiment -->
+        <div class="emoji {% if result == 'Positive' %}happy{% else %}sad{% endif %}">
+            {% if result == 'Positive' %}
+                😀
+            {% else %}
+                ☹️
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+<script>
+    function clearText() {
+        // Clear the input text box and result
+        document.getElementById("text").value = "";
+        // Optionally, you can also remove the result text if needed
+        document.querySelector('.result')?.remove();
+    }
+</script>
+
+</body>
+</html>
